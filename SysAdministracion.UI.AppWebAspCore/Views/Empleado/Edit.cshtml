@@ -1,0 +1,137 @@
+﻿@model SysAdministracion.EntidadesDeNegocio.Empleado
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Modificar Empleado</h1>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" class="form-control" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="form-group">
+                      <label asp-for="Apellido" class="control-label"></label>
+                      <input asp-for="Apellido" class="form-control" />
+                      <span asp-validation-for="Apellido" class="text-danger"></span>
+                   </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DUI" class="control-label"></label>
+                        <input asp-for="DUI" class="form-control" />
+                        <span asp-validation-for="DUI" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Cargo" class="control-label"></label>
+                        <select asp-for="Cargo" class="form-control">
+                            <option selected value="">SELECCIONAR</option>
+                            @if (Model.Cargo == 1)
+                            {
+                                <option selected value="1">ADMINISTRADOR_DE_REDES</option>
+                            }
+                            else
+                            {
+                                <option value="1">ADMINISTRADOR_DE_REDES</option>
+                            }
+                            @if (Model.Cargo == 2)
+                            {
+                                <option selected value="2">DESARROLLADOR</option>
+                            }
+                            else
+                            {
+                                <option value="2">DESARROLLADOR</option>
+                            }
+                            @if (Model.Cargo == 3)
+                            {
+                                <option selected value="3">MANTENIMINETO</option>
+                            }
+                            else
+                            {
+                                <option value="3">MANTENIMINETO</option>
+                            }
+                            @if (Model.Cargo == 4)
+                            {
+                                <option selected value="4">ELECTRICISTA</option>
+                            }
+                            else
+                            {
+                                <option value="4">ELECTRICISTA</option>
+                            }
+                            @if (Model.Cargo == 5)
+                            {
+                                <option selected value="5">ENCARGADO_DE_LIMPIEZA</option>
+                            }
+                            else
+                            {
+                                <option value="5">ENCARGADO_DE_LIMPIEZA</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Cargo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Area" class="control-label"></label>
+                        <select asp-for="Area" class="form-control">
+                            <option selected value="">SELECCIONAR</option>
+                            @if (Model.Area == 1)
+                            {
+                                <option selected value="1">RECURSOS_HUMANOS</option>
+                            }
+                            else
+                            {
+                                <option value="1">RECURSOS_HUMANOS</option>
+                            }
+                            @if (Model.Area == 2)
+                            {
+                                <option selected value="2">IT</option>
+                            }
+                            else
+                            {
+                                <option value="2">IT</option>
+                            }
+                            @if (Model.Area == 3)
+                            {
+                                <option selected value="3">MANTENIMIENTO</option>
+                            }
+                            else
+                            {
+                                <option value="3">MANTENIMIENTO</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Area" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-dark">Cancelar</a>
+            </div>
+            <span class="text-danger">@ViewBag.Error</span>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(function () {
+            $("form input[name]").trigger("blur");
+        });
+    </script>
+}

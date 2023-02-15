@@ -13,7 +13,7 @@ namespace SysAdministracion.AccesoADatos
         public DbSet<Empleado> Empleado { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-G647R0I;Initial Catalog=Administraciondb;Integrated Security=True");
         }
     }
 }

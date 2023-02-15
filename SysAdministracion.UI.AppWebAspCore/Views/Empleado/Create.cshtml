@@ -1,0 +1,75 @@
+﻿@model SysAdministracion.EntidadesDeNegocio.Empleado
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear Empleado</h1>
+<hr />
+<div class="row-cols-1">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+            </div>
+             <div class="col-md-6">
+                 <div class="form-group">
+                    <label asp-for="Apellido" class="control-label"></label>
+                    <input asp-for="Apellido" class="form-control" />
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                 </div>
+             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DUI" class="control-label"></label>
+                    <input asp-for="DUI" class="form-control" />
+                    <span asp-validation-for="DUI" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Cargo" class="control-label"></label>
+                    <select asp-for="Cargo" class="form-control">
+                        <option value="">SELECCIONAR</option>
+                        <option selected value="1">ADMINISTRADOR_DE_REDES</option>
+                        <option value="2">DESARROLLADOR</option>
+                        <option value="3">MANTENIMINETO</option>
+                        <option value="4">ELECTRICISTA</option>
+                        <option value="5">ENCARGADO_DE_LIMPIEZA</option>
+                    </select>
+                    <span asp-validation-for="Cargo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Area" class="control-label"></label>
+                    <select asp-for="Area" class="form-control">
+                        <option value="">SELECCIONAR</option>
+                        <option selected value="1">RECURSOS_HUMANOS</option>
+                        <option value="2">IT</option>
+                        <option value="3">MANTENIMIENTO</option>
+                    </select>
+                    <span asp-validation-for="Area" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row-cols-1">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-dark">Cancelar</a>
+                </div>
+                <span class="text-danger">@ViewBag.Error</span>
+            </div>
+        </div>
+        <span class="text-danger">@ViewBag.Error</span>
+    </form>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
