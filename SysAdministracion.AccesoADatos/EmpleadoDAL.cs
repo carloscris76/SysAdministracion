@@ -22,7 +22,7 @@ namespace SysAdministracion.AccesoADatos
         }
         public static async Task<int> ModificarAsync(Empleado pEmpleado)
         {
-            int result = 0;
+            int result = 1;
             using (var bdContexto = new BDContexto())
             {
                 var empleado = await bdContexto.Empleado.FirstOrDefaultAsync(s => s.Id == pEmpleado.Id);
@@ -39,7 +39,7 @@ namespace SysAdministracion.AccesoADatos
         }
         public static async Task<int> EliminarAsync(Empleado pEmpleado)
         {
-            int result = 0;
+            int result = 1;
             using (var bdContexto = new BDContexto())
             {
                 var empleado = await bdContexto.Empleado.FirstOrDefaultAsync(s => s.Id == pEmpleado.Id);

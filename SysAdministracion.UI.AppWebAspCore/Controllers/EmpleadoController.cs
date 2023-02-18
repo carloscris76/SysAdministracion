@@ -76,6 +76,7 @@ namespace SysAdministracion.UI.AppWebAspCore.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
+                ViewBag.Empleados = await empleadoBL.ObtenerTodosAsync();
                 return View(pEmpleado);
             }
         }
@@ -100,7 +101,12 @@ namespace SysAdministracion.UI.AppWebAspCore.Controllers
             catch (Exception ex) 
             {
                 ViewBag.Error = ex.Message;
-                return View(pEmpleado);
+                var empleado = await empleadoBL.ObtenerPorIdAsync(pEmpleado);
+                if (empleado == null)
+                    empleado = new Empleado();
+                if (empleado.Id > 0)
+                    empleado = await empleadoBL.ObtenerPorIdAsync(new Empleado { Id = empleado.Id });
+                    return View(pEmpleado);
             }
         }
     }
